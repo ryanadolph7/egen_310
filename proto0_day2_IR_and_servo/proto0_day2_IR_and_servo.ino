@@ -20,28 +20,7 @@ void loop()
 {
   if (IrReceiver.decode()) { 	// if the receiver has decoded anything
     Serial.println(IrReceiver.decodedIRData.command);	// print the decoded info
-    switch (IrReceiver.decodedIRData.command) {
-      case 12:
-      keepGoing = true;
-        
-        while(true) {
-          IrReceiver.resume();
-          Serial.println(IrReceiver.decodedIRData.command);	// print the decoded info
-        }
-            
-
-      	break;
-      case 24: 
-      	myServo.write(0);
-      	break;
-      case 94: 
-        keepGoing = false;
-        break;
-      default: 
-      	Serial.println("No input or incorrect input, doing nothing...");
-      	break;
-    }
-
+  
     IrReceiver.resume();		// resume listening
   }
 }
